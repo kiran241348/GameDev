@@ -1,54 +1,9 @@
 fileFormatVersion: 2
-guid: 2f4ad1199b6cf29469d4db0d8572b7b0
+guid: eaa88edf93d96354c8a0b7d2f68e488e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Calfskin Leather Dark Red
-    second: {fileID: 2100000, guid: 2443d48e34a01a1479a4febe7a977326, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dichroic Glass 01
-    second: {fileID: 2100000, guid: 012e92618939edf4aa7615632b234c66, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Elegant Classic Plaid Picnic Tablecloth
-    second: {fileID: 2100000, guid: 66b6835e08228b64491848c1658f5fb1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Realisitc chesse with holes
-    second: {fileID: 2100000, guid: 75c8ca934b4e3684db005908820506e8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Yellow Mustard
-    second: {fileID: 2100000, guid: 2c8670a29dabd4646b1b4fb23731c2f8, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: calfskin_Leather_004_Dark_Red_BaseColor
-    second: {fileID: 2800000, guid: 346b2ca554f21aa48b43020108a6f15c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: calfskin_Leather_004_Dark_Red_Normal
-    second: {fileID: 2800000, guid: 156cf0615ac2caf43bca0138c3470894, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: calfskin_Leather_004_Dark_Red_Roughness
-    second: {fileID: 2800000, guid: 15912121821f47b4c91716dc3b61ebc8, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: realisitc_chesse_with_holes_Roughness
-    second: {fileID: 2800000, guid: 630c84b4f12d3c14c8112362ddd97e45, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
