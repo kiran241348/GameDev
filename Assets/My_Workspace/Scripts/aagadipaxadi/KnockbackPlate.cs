@@ -15,22 +15,34 @@ public class KnockbackPlate : MonoBehaviour
 
             if (controller != null)
             {
-                StartCoroutine(KnockbackPlayer(other.transform, controller));
+                StartCoroutine(
+                    KnockbackPlayer(other.transform, controller)
+                );
             }
         }
     }
 
-    IEnumerator KnockbackPlayer(Transform player,
-                                CharacterController controller)
+    IEnumerator KnockbackPlayer(
+        Transform player,
+        CharacterController controller)
     {
         Vector3 startPos = player.position;
 
-        // direction away from plate
+        // Direction from plate to player
         Vector3 direction =
             (player.position - transform.position).normalized;
 
+        direction.y = 0;
+
+        // If player is behind plate,
+        // push forward instead
+        if (Vector3.Dot(direction, transform.forward) < 0)
+        {
+            direction = transform.forward;
+        }
+
         Vector3 targetPos =
-            startPos + direction * knockbackDistance;
+            startPos + direction.normalized * knockbackDistance;
 
         float elapsed = 0f;
 
@@ -39,8 +51,9 @@ public class KnockbackPlate : MonoBehaviour
             elapsed += Time.deltaTime;
 
             Vector3 move =
-                Vector3.Lerp(startPos, targetPos,
-                elapsed / knockbackDuration);
+                Vector3.Lerp(startPos,
+                             targetPos,
+                             elapsed / knockbackDuration);
 
             controller.enabled = false;
             player.position = move;

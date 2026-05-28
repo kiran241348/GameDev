@@ -720,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Vitra_Baira
   speed: 0.7
   leftLimit: -23.3
-  rightLimit: -21.1
+  rightLimit: -21.4
 --- !u!1 &6436929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Vitra_Baira
   speed: 0.7
   leftLimit: -23.3
-  rightLimit: -21.1
+  rightLimit: -21.4
 --- !u!1 &30938426 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 87aa41fd84c3f1446a76ad89fe3352b7, type: 3}
@@ -4426,7 +4426,7 @@ Transform:
   m_GameObject: {fileID: 83991758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.24, y: 1.36, z: -3.07}
+  m_LocalPosition: {x: -36.24, y: 1.36, z: -3.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4526,7 +4526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3782f64b957b35f40945303b5952bca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghumne
-  rotationSpeed: 100
+  rotationSpeed: 150
 --- !u!1 &84999105
 GameObject:
   m_ObjectHideFlags: 0
@@ -8524,7 +8524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Vitra_Baira
   speed: 0.7
   leftLimit: -23.3
-  rightLimit: -21.1
+  rightLimit: -21.4
 --- !u!1 &149914441
 GameObject:
   m_ObjectHideFlags: 0
@@ -43277,6 +43277,7 @@ GameObject:
   - component: {fileID: 723754596}
   - component: {fileID: 723754595}
   - component: {fileID: 723754594}
+  - component: {fileID: 723754597}
   m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -43293,7 +43294,7 @@ Transform:
   m_GameObject: {fileID: 723754592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.0890007, y: 0.09399998, z: 2.577}
+  m_LocalPosition: {x: 0.0890007, y: 0.09399998, z: 2.99}
   m_LocalScale: {x: 1, y: 0.65960985, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43314,7 +43315,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -43379,6 +43380,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723754592}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &723754597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723754592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &723966333
 GameObject:
   m_ObjectHideFlags: 0
@@ -45239,7 +45254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Vitra_Baira
   speed: 0.7
   leftLimit: -23.3
-  rightLimit: -21.1
+  rightLimit: -21.4
 --- !u!1 &747106731
 GameObject:
   m_ObjectHideFlags: 0
@@ -47368,7 +47383,6 @@ GameObject:
   - component: {fileID: 780071165}
   - component: {fileID: 780071164}
   - component: {fileID: 780071167}
-  - component: {fileID: 780071168}
   m_Layer: 0
   m_Name: agadi paxadi
   m_TagString: Untagged
@@ -47385,8 +47399,8 @@ Transform:
   m_GameObject: {fileID: 780071162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 4.54, y: 1.7746601, z: -4.73}
-  m_LocalScale: {x: 1.5303, y: 0.12242, z: 1.5302999}
+  m_LocalPosition: {x: 3.48, y: 1.7746601, z: -4.73}
+  m_LocalScale: {x: 1.5303, y: 0.46, z: 1.5302999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738332945}
@@ -47406,7 +47420,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -47481,23 +47495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6546a03c4aca7cf468d2f8065a8e9fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::left_ritht
-  speed: 3
-  leftLimit: -3
-  rightLimit: 0.5
---- !u!114 &780071168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780071162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
-  knockbackDistance: 5
-  knockbackDuration: 0.2
+  speed: 7
+  leftLimit: -3.6
+  rightLimit: 0.9
 --- !u!1 &780353851
 GameObject:
   m_ObjectHideFlags: 0
@@ -63772,7 +63772,6 @@ GameObject:
   - component: {fileID: 1062735978}
   - component: {fileID: 1062735977}
   - component: {fileID: 1062735980}
-  - component: {fileID: 1062735981}
   m_Layer: 0
   m_Name: aagadi paxadi (last)
   m_TagString: Untagged
@@ -63790,7 +63789,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -5.79, y: 0.63, z: 1.25}
-  m_LocalScale: {x: 1.5303, y: 0.12242, z: 1.5302999}
+  m_LocalScale: {x: 1.5303, y: 0.46, z: 1.5302999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738332945}
@@ -63810,7 +63809,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -63885,23 +63884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6546a03c4aca7cf468d2f8065a8e9fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::left_ritht
-  speed: 3
-  leftLimit: 0.5
-  rightLimit: 6
---- !u!114 &1062735981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062735975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
-  knockbackDistance: 5
-  knockbackDuration: 0.2
+  speed: 4
+  leftLimit: 2.49
+  rightLimit: 7.22
 --- !u!1 &1067865509
 GameObject:
   m_ObjectHideFlags: 0
@@ -73969,6 +73954,7 @@ GameObject:
   - component: {fileID: 1215286619}
   - component: {fileID: 1215286618}
   - component: {fileID: 1215286617}
+  - component: {fileID: 1215286620}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -73985,8 +73971,8 @@ Transform:
   m_GameObject: {fileID: 1215286615}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.1210022, y: 0.14999998, z: 1.3399999}
-  m_LocalScale: {x: 0.32825, y: 1.151304, z: 0.32825}
+  m_LocalPosition: {x: 0.1210022, y: 0.14999998, z: 1.39}
+  m_LocalScale: {x: 0.32825, y: 1.45, z: 0.32825}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1994821240}
@@ -74006,7 +73992,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -74071,6 +74057,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215286615}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1215286620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215286615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &1216392619
 GameObject:
   m_ObjectHideFlags: 0
@@ -82255,7 +82255,6 @@ GameObject:
   - component: {fileID: 1362576937}
   - component: {fileID: 1362576936}
   - component: {fileID: 1362576939}
-  - component: {fileID: 1362576940}
   m_Layer: 0
   m_Name: aagadi paxadi
   m_TagString: Untagged
@@ -82273,7 +82272,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 9, y: 1.37, z: -1.2}
-  m_LocalScale: {x: 1.5303, y: 0.12242, z: 1.5302999}
+  m_LocalScale: {x: 1.5303, y: 0.46, z: 1.5302999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738332945}
@@ -82293,7 +82292,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -82371,20 +82370,6 @@ MonoBehaviour:
   speed: 3
   leftLimit: -25.5
   rightLimit: -22
---- !u!114 &1362576940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362576934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
-  knockbackDistance: 5
-  knockbackDuration: 0.2
 --- !u!1 &1363809015
 GameObject:
   m_ObjectHideFlags: 0
@@ -102463,6 +102448,7 @@ GameObject:
   - component: {fileID: 1647119440}
   - component: {fileID: 1647119439}
   - component: {fileID: 1647119438}
+  - component: {fileID: 1647119441}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -102480,7 +102466,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0.1210022, y: 0.14999998, z: 1.3399999}
-  m_LocalScale: {x: 0.32825, y: 1.151304, z: 0.32825}
+  m_LocalScale: {x: 0.32825, y: 1.45, z: 0.32825}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 83991759}
@@ -102500,7 +102486,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -102565,6 +102551,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647119436}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1647119441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647119436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &1651242808
 GameObject:
   m_ObjectHideFlags: 0
@@ -115415,7 +115415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Vitra_Baira
   speed: 0.7
   leftLimit: -23.3
-  rightLimit: -21.1
+  rightLimit: -21.4
 --- !u!1 &1850602843
 GameObject:
   m_ObjectHideFlags: 0
@@ -124565,7 +124565,7 @@ Transform:
   m_GameObject: {fileID: 1994821239}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.24, y: 1.36, z: -3.07}
+  m_LocalPosition: {x: -36.24, y: 1.36, z: -2.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -124665,7 +124665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3782f64b957b35f40945303b5952bca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghumne
-  rotationSpeed: 100
+  rotationSpeed: 150
 --- !u!1 &1997822536
 GameObject:
   m_ObjectHideFlags: 0
@@ -126114,7 +126114,6 @@ GameObject:
   - component: {fileID: 2015407384}
   - component: {fileID: 2015407383}
   - component: {fileID: 2015407386}
-  - component: {fileID: 2015407387}
   m_Layer: 0
   m_Name: agdi paxadi
   m_TagString: Untagged
@@ -126131,8 +126130,8 @@ Transform:
   m_GameObject: {fileID: 2015407381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 4.739, y: 1.7746601, z: -0.59}
-  m_LocalScale: {x: 1.5303, y: 0.12242, z: 1.5302999}
+  m_LocalPosition: {x: 4.26, y: 1.7746601, z: -0.59}
+  m_LocalScale: {x: 1.5303, y: 0.46, z: 1.5302999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738332945}
@@ -126152,7 +126151,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -126227,23 +126226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6546a03c4aca7cf468d2f8065a8e9fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::left_ritht
-  speed: 3
-  leftLimit: 1
-  rightLimit: 4.5
---- !u!114 &2015407387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015407381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
-  knockbackDistance: 5
-  knockbackDuration: 0.2
+  speed: 7
+  leftLimit: 2.6
+  rightLimit: 7.1
 --- !u!1 &2017166266
 GameObject:
   m_ObjectHideFlags: 0
@@ -133139,6 +133124,7 @@ GameObject:
   - component: {fileID: 2139654824}
   - component: {fileID: 2139654823}
   - component: {fileID: 2139654822}
+  - component: {fileID: 2139654825}
   m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -133155,7 +133141,7 @@ Transform:
   m_GameObject: {fileID: 2139654820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.0890007, y: 0.09399998, z: 2.577}
+  m_LocalPosition: {x: 0.0890007, y: 0.09399998, z: 2.99}
   m_LocalScale: {x: 1, y: 0.65960985, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133176,7 +133162,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -133241,6 +133227,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139654820}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2139654825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139654820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &2140369720
 GameObject:
   m_ObjectHideFlags: 0
