@@ -3134,6 +3134,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1263152240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7747993969997962319, guid: 0ce3c9f93502c0047bff80cb64dc958b, type: 3}
+  m_PrefabInstance: {fileID: 8544340163733275392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269186477 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4753228179866097602, guid: 0ce3c9f93502c0047bff80cb64dc958b, type: 3}
@@ -5663,6 +5668,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1203488582}
   m_SourcePrefab: {fileID: 100100000, guid: 4c808c1ecda6a1943ae7151c7fc5493f, type: 3}
+--- !u!1 &2064271644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064271645}
+  m_Layer: 0
+  m_Name: script halne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2064271645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064271644}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -52.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1263152240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145083705 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3944501629878470223, guid: 0ce3c9f93502c0047bff80cb64dc958b, type: 3}
@@ -5796,6 +5832,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3237494091689962872, guid: 0ce3c9f93502c0047bff80cb64dc958b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1423693081}
+    - targetCorrespondingSourceObject: {fileID: 7747993969997962319, guid: 0ce3c9f93502c0047bff80cb64dc958b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2064271645}
     - targetCorrespondingSourceObject: {fileID: 8920792239833414072, guid: 0ce3c9f93502c0047bff80cb64dc958b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1960075998}
