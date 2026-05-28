@@ -47368,6 +47368,7 @@ GameObject:
   - component: {fileID: 780071165}
   - component: {fileID: 780071164}
   - component: {fileID: 780071167}
+  - component: {fileID: 780071168}
   m_Layer: 0
   m_Name: agadi paxadi
   m_TagString: Untagged
@@ -47405,7 +47406,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -47483,6 +47484,20 @@ MonoBehaviour:
   speed: 3
   leftLimit: -3
   rightLimit: 0.5
+--- !u!114 &780071168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780071162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &780353851
 GameObject:
   m_ObjectHideFlags: 0
@@ -63757,6 +63772,7 @@ GameObject:
   - component: {fileID: 1062735978}
   - component: {fileID: 1062735977}
   - component: {fileID: 1062735980}
+  - component: {fileID: 1062735981}
   m_Layer: 0
   m_Name: aagadi paxadi (last)
   m_TagString: Untagged
@@ -63794,7 +63810,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -63872,6 +63888,20 @@ MonoBehaviour:
   speed: 3
   leftLimit: 0.5
   rightLimit: 6
+--- !u!114 &1062735981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062735975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &1067865509
 GameObject:
   m_ObjectHideFlags: 0
@@ -82225,6 +82255,7 @@ GameObject:
   - component: {fileID: 1362576937}
   - component: {fileID: 1362576936}
   - component: {fileID: 1362576939}
+  - component: {fileID: 1362576940}
   m_Layer: 0
   m_Name: aagadi paxadi
   m_TagString: Untagged
@@ -82340,6 +82371,20 @@ MonoBehaviour:
   speed: 3
   leftLimit: -25.5
   rightLimit: -22
+--- !u!114 &1362576940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362576934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &1363809015
 GameObject:
   m_ObjectHideFlags: 0
@@ -126069,6 +126114,7 @@ GameObject:
   - component: {fileID: 2015407384}
   - component: {fileID: 2015407383}
   - component: {fileID: 2015407386}
+  - component: {fileID: 2015407387}
   m_Layer: 0
   m_Name: agdi paxadi
   m_TagString: Untagged
@@ -126106,7 +126152,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -126184,6 +126230,20 @@ MonoBehaviour:
   speed: 3
   leftLimit: 1
   rightLimit: 4.5
+--- !u!114 &2015407387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015407381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183dcd3c51a8bee47badb86d52289f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnockbackPlate
+  knockbackDistance: 5
+  knockbackDuration: 0.2
 --- !u!1 &2017166266
 GameObject:
   m_ObjectHideFlags: 0
