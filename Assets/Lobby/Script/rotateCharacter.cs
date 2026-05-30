@@ -11,9 +11,11 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
     public float smoothTime = 0.1f;
 
     [Header("Scroll Settings")]
-    public ScrollRect scrollRect; // Optional: if using ScrollRect
     public RectTransform scrollArea; // The image area to scroll on
-    public bool invertRotation = false; // Set to true if you want to reverse direction
+    public bool invertRotation = false;
+
+    [Header("UI Settings")]
+    public bool allowOtherUI = true; // Allow other UI buttons to work
 
     [Header("Rotation Limits")]
     public bool limitRotation = false;
@@ -24,11 +26,15 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
     public bool showDebugLogs = true;
     public GameObject rotationRingEffect;
 
+    [Header("Emote System Integration")]
+    public LobbyEmoteSystem emoteSystem; // Reference to the emote system
+
     private float targetRotationY = 0f;
     private float currentRotationY = 0f;
     private float rotationVelocity = 0f;
-    private bool isScrolling = false;
+    private bool isDragging = false;
     private Vector2 lastScrollPosition;
+    private bool isOverScrollArea = false;
 
     private void Start()
     {
@@ -38,12 +44,17 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
         currentRotationY = characterToRotate.eulerAngles.y;
         targetRotationY = currentRotationY;
 
-        // Setup scroll area if not assigned
         if (scrollArea == null)
         {
             Image img = GetComponent<Image>();
             if (img != null)
                 scrollArea = GetComponent<RectTransform>();
+        }
+
+        // Find emote system if not assigned
+        if (emoteSystem == null)
+        {
+            emoteSystem = FindObjectOfType<LobbyEmoteSystem>();
         }
 
         if (showDebugLogs)
@@ -52,9 +63,9 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
 
     private void Update()
     {
-        // Handle mouse scroll wheel
+        // Handle mouse scroll wheel only when over scroll area
         float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollDelta != 0)
+        if (scrollDelta != 0 && IsMouseOverScrollArea())
         {
             OnScroll(scrollDelta);
         }
@@ -71,9 +82,18 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
         }
     }
 
+    private bool IsMouseOverScrollArea()
+    {
+        if (scrollArea == null) return true;
+
+        Vector2 mousePos = Input.mousePosition;
+        return RectTransformUtility.RectangleContainsScreenPoint(scrollArea, mousePos);
+    }
+
     public void OnScroll(PointerEventData eventData)
     {
-        // Get scroll delta from event
+        if (!IsPointerOverScrollArea(eventData) && allowOtherUI) return;
+
         float scrollDelta = eventData.scrollDelta.y;
         OnScroll(scrollDelta);
     }
@@ -82,26 +102,19 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
     {
         if (characterToRotate == null) return;
 
-        isScrolling = true;
-
-        // FIXED: Calculate rotation amount - Natural direction (scroll up = rotate right)
         float rotationAmount = -scrollDelta * rotationSpeed;
 
-        // Apply inversion if needed
         if (invertRotation)
             rotationAmount = -rotationAmount;
 
-        // Update target rotation
         targetRotationY += rotationAmount;
 
-        // Apply limits
         if (limitRotation)
             targetRotationY = Mathf.Clamp(targetRotationY, minAngle, maxAngle);
 
         if (showDebugLogs)
-            Debug.Log($"Scrolling: {scrollDelta}, Rotation Amount: {rotationAmount}, Total: {targetRotationY}");
+            Debug.Log($"Scrolling: {scrollDelta}, Rotation: {targetRotationY}");
 
-        // Visual feedback
         if (rotationRingEffect != null)
         {
             rotationRingEffect.SetActive(true);
@@ -112,8 +125,18 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!IsPointerOverScrollArea(eventData) && allowOtherUI) return;
+
         lastScrollPosition = eventData.position;
-        isScrolling = true;
+        isDragging = true;
+
+        // Notify emote system that rotation has started
+        if (emoteSystem != null)
+        {
+            emoteSystem.SetRotating(true);
+            if (showDebugLogs)
+                Debug.Log("Notified emote system: Rotation started");
+        }
 
         if (showDebugLogs)
             Debug.Log("Started dragging for rotation");
@@ -121,15 +144,12 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!isScrolling) return;
+        if (!isDragging) return;
 
-        // Calculate drag delta for smooth rotation
         Vector2 dragDelta = eventData.position - lastScrollPosition;
 
-        // FIXED: Natural drag direction (drag right = rotate right)
         float rotationAmount = dragDelta.x * (rotationSpeed * 0.1f);
 
-        // Apply inversion if needed
         if (invertRotation)
             rotationAmount = -rotationAmount;
 
@@ -142,17 +162,28 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
 
         if (!smoothRotation)
             ApplyRotation(targetRotationY);
-
-        if (showDebugLogs)
-            Debug.Log($"Dragging: {dragDelta.x}, Rotation: {targetRotationY}");
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        isScrolling = false;
+        isDragging = false;
+
+        // Notify emote system that rotation has ended
+        if (emoteSystem != null)
+        {
+            emoteSystem.SetRotating(false);
+            if (showDebugLogs)
+                Debug.Log("Notified emote system: Rotation ended");
+        }
 
         if (showDebugLogs)
             Debug.Log("Stopped dragging");
+    }
+
+    private bool IsPointerOverScrollArea(PointerEventData eventData)
+    {
+        if (scrollArea == null) return true;
+        return RectTransformUtility.RectangleContainsScreenPoint(scrollArea, eventData.position);
     }
 
     private void ApplyRotation(float yRotation)
@@ -168,7 +199,6 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
             rotationRingEffect.SetActive(false);
     }
 
-    // Public method to reset rotation
     public void ResetRotation()
     {
         targetRotationY = 0f;
@@ -176,11 +206,26 @@ public class ScrollToRotateCharacter : MonoBehaviour, IScrollHandler, IBeginDrag
         ApplyRotation(0f);
     }
 
-    // Public method to set custom rotation
     public void SetRotation(float angle)
     {
         targetRotationY = angle;
         currentRotationY = angle;
         ApplyRotation(angle);
+    }
+
+    // Public method to check if currently rotating
+    public bool IsRotating()
+    {
+        return isDragging;
+    }
+
+    private void OnDisable()
+    {
+        // Reset rotation state when disabled
+        if (emoteSystem != null && isDragging)
+        {
+            emoteSystem.SetRotating(false);
+        }
+        isDragging = false;
     }
 }
