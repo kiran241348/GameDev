@@ -45,6 +45,13 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
     public float tapDurationThreshold = 0.2f; // Minimum tap duration
     public float maxDragDistance = 10f; // Max drag distance to still count as tap
 
+    [Header("Sound Effects")]
+    public AudioSource audioSource; // Audio source for playing sounds
+    public AudioClip characterTapSound; // Sound when tapping character
+    public AudioClip buttonClickSound; // Sound when clicking emote button
+    public AudioClip emotePlaySound; // Sound when emote starts playing
+    public float soundVolume = 1f; // Volume for sound effects
+
     // Rotation state tracking
     private bool isRotating = false;
     private string currentEmote = "";
@@ -72,6 +79,23 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
         if (characterTransform == null)
             characterTransform = transform;
 
+        // Setup audio source if not assigned
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        // Configure audio source
+        if (audioSource != null)
+        {
+            audioSource.volume = soundVolume;
+            audioSource.playOnAwake = false;
+        }
+
         // Setup dictionary and buttons
         foreach (var emoteBtn in emoteButtons)
         {
@@ -80,7 +104,15 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
             if (emoteBtn.button != null)
             {
                 string emoteName = emoteBtn.emoteName;
-                emoteBtn.button.onClick.AddListener(() => OnEmoteButtonClicked(emoteName));
+
+                // Remove existing listeners to avoid duplicates
+                emoteBtn.button.onClick.RemoveAllListeners();
+
+                // Add new listener with sound
+                emoteBtn.button.onClick.AddListener(() => {
+                    PlaySound(buttonClickSound);
+                    OnEmoteButtonClicked(emoteName);
+                });
 
                 var colors = emoteBtn.button.colors;
                 colors.disabledColor = cooldownColor;
@@ -111,10 +143,25 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Debug.Log("Mouse manually unlocked with Escape key");
         }
 
         // Handle character tap
         HandleCharacterTap();
+    }
+
+    // Helper method to play sounds
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip, soundVolume);
+            Debug.Log($"Playing sound: {clip.name}");
+        }
+        else if (clip == null)
+        {
+            Debug.LogWarning("Sound clip is null!");
+        }
     }
 
     // Public method to be called from rotation script
@@ -185,6 +232,10 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
             if (IsTapOnCharacter(endPosition))
             {
                 Debug.Log("Intentional tap detected on character!");
+
+                // Play character tap sound
+                PlaySound(characterTapSound);
+
                 ToggleEmoteUI();
             }
         }
@@ -298,6 +349,9 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
         {
             StopCurrentEmote();
         }
+
+        // Play emote sound
+        PlaySound(emotePlaySound);
 
         StartCoroutine(PlayEmoteWithFeedback(emoteName, emoteBtn));
     }
@@ -430,6 +484,10 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
     public void OnEmoteButtonClick(int emoteNumber)
     {
         string emoteName = $"emote{emoteNumber}";
+
+        // Play button click sound
+        PlaySound(buttonClickSound);
+
         PlayEmote(emoteName);
 
         if (hideOnEmoteClick)
@@ -452,6 +510,7 @@ public class LobbyEmoteSystem : MonoBehaviour, IPointerClickHandler
     {
         if (!isRotating)
         {
+            PlaySound(characterTapSound);
             ToggleEmoteUI();
         }
     }
