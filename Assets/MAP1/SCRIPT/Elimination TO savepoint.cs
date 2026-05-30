@@ -1,98 +1,89 @@
 using UnityEngine;
+using System.Collections;
 
 public class ResetPositionOnTouch : MonoBehaviour
 {
     [Header("Setup")]
-    public Transform targetBox; // Assign Box2's Transform in Inspector
+    public Transform savePoint; // Where player goes after elimination
     public string playerTag = "Player";
+
+    [Header("Animation")]
+    public float animationDuration = 1f;
+
+    [Header("Effects")]
+    public ParticleSystem particles;
+    public AudioSource sound;
+
+    private bool isRespawn = false;
 
     void Start()
     {
-        // Make sure collider is a trigger
+        // Make collider a trigger
         Collider col = GetComponent<Collider>();
-        if (col != null)
+        if (col != null) col.isTrigger = true;
+        else
         {
-            col.isTrigger = true;
-        }
-
-        // Add a collider if none exists
-        if (col == null)
-        {
-            BoxCollider boxCol = gameObject.AddComponent<BoxCollider>();
-            boxCol.isTrigger = true;
+            BoxCollider box = gameObject.AddComponent<BoxCollider>();
+            box.isTrigger = true;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the object that touched is the player
-        if (other.CompareTag(playerTag))
-        {
-            // Check if target box is assigned
-            if (targetBox != null)
-            {
-                // METHOD 1: Direct position change
-                other.transform.position = targetBox.position;
+        if (isRespawn) return;
+        if (!other.CompareTag(playerTag)) return;
 
-                // METHOD 2: Also try setting via Transform component
-                Transform playerTransform = other.GetComponent<Transform>();
-                if (playerTransform != null)
-                {
-                    playerTransform.position = targetBox.position;
-                }
+        Debug.Log("Player eliminated! Moving to save point...");
 
-                // METHOD 3: If player has a CharacterController, use it
-                CharacterController controller = other.GetComponent<CharacterController>();
-                if (controller != null)
-                {
-                    controller.enabled = false;
-                    other.transform.position = targetBox.position;
-                    controller.enabled = true;
-                }
+        // Play effects
+        if (particles != null) particles.Play();
+        if (sound != null) sound.Play();
 
-                // METHOD 4: If player has a Rigidbody, set position properly
-                Rigidbody rb = other.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.position = targetBox.position;
-                    rb.linearVelocity = Vector3.zero;
-                }
-
-                // Double check if position actually changed
-                Debug.Log($"Player reset to: {targetBox.name} at position {targetBox.position}");
-                Debug.Log($"Player is now at: {other.transform.position}");
-            }
-            else
-            {
-                Debug.LogError("Target Box not assigned! Please drag Box2 into the script.");
-            }
-        }
+        StartCoroutine(EliminatePlayer(other.gameObject));
     }
 
-    // Visual helper in editor
-    void OnDrawGizmos()
+    IEnumerator EliminatePlayer(GameObject player)
     {
-        if (targetBox != null)
-        {
-            // Draw line from Box1 to Box2
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, targetBox.position);
+        
 
-            // Draw sphere at Box2 position
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(targetBox.position, 0.5f);
+        // Get components
+        CharacterController controller = player.GetComponent<CharacterController>();
+        Animator animator = player.GetComponent<Animator>();
+
+        // Disable controller
+        if (controller != null) controller.enabled = false;
+
+        yield return new WaitForEndOfFrame();
+
+        // Move to save point
+        if (savePoint != null)
+        {
+            player.transform.position = savePoint.position;
+            Debug.Log($"Player moved to save point: {savePoint.position}");
+            isRespawn = true;
+            isRespawn = true;
         }
 
-        // Draw Box1's collider
-        Gizmos.color = Color.red;
-        Collider col = GetComponent<Collider>();
-        if (col != null)
+        // Reset velocity
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        if (rb != null) rb.linearVelocity = Vector3.zero;
+
+        // Re-enable controller
+        if (controller != null) controller.enabled = true;
+
+        // Trigger IsReSpawn animation
+        if (animator != null)
         {
-            Gizmos.DrawWireCube(transform.position, col.bounds.size);
+            animator.SetBool("IsReSpawn", true);
+            Debug.Log("IsReSpawn = TRUE");
+
+            yield return new WaitForSeconds(animationDuration);
+
+            animator.SetBool("IsReSpawn", false);
+            Debug.Log("IsReSpawn = FALSE");
         }
-        else
-        {
-            Gizmos.DrawWireCube(transform.position, Vector3.one);
-        }
+
+        isRespawn = false;
+        Debug.Log("Respawn complete!");
     }
 }
