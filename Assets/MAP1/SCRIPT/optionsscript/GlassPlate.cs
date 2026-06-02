@@ -11,7 +11,7 @@ public class GlassPlate : MonoBehaviour
     public GameObject questionMark;
     public GameObject crossMark;
 
-    public float fallDelay = 0.1f;
+    public float fallDelay = 0.02f;
 
     private Renderer rend;
     private Rigidbody rb;
@@ -90,6 +90,6 @@ public class GlassPlate : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
 
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 0.7f);
     }
 }
