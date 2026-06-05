@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95195e10a5ef23b47a0419b77329f84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTrigger
-  IsReSpawning: 1
+  player: {fileID: 0}
 --- !u!65 &7706144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47879,7 +47879,7 @@ Transform:
   m_GameObject: {fileID: 1217867470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: -17, z: 2}
+  m_LocalPosition: {x: -14, y: -32, z: 2}
   m_LocalScale: {x: 84.54185, y: 1, z: 25.424}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47992,7 +47992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95195e10a5ef23b47a0419b77329f84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResetAnimatorOnTouch
-  IsReSpawning: 0
+  player: {fileID: 0}
 --- !u!1 &1218627218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 87aa41fd84c3f1446a76ad89fe3352b7, type: 3}
