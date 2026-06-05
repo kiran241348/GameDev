@@ -12911,7 +12911,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8691780276856062721, guid: eaa88edf93d96354c8a0b7d2f68e488e, type: 3}
---- !u!1001 &1197173237309023771
+--- !u!1001 &7517581368687066198
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -12919,95 +12919,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 430742389235154043, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
+      propertyPath: m_Name
+      value: character
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -92.3931
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -9.82683
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 119936115202164284, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+    - target: {fileID: 1984313572210180073, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: runSound
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: fallSound
-      value: 
-      objectReference: {fileID: 8300000, guid: a76d6d3ba5ade584ab88bfe00bfb0274, type: 3}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: jumpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 890fe64d9368a6e44801723a9e9da639, type: 3}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: walkSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 3a42a8fb7a7fb674281e5d809fdcd79a, type: 3}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: fallSoundDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: enableDebugLogs
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: walkFootstepInterval
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: useKeyboardAsFallback
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: disableJumpDuringSpawn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242651020821306144, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: disableMovementDuringSpawn
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295118404486366638, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
-      propertyPath: m_Name
-      value: character
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bed71274e8503f04aafe4357685c06ee, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e4437b8a8b67cdf4d97359c066d3744c, type: 3}
 --- !u!1001 &8544340163733275392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13338,5 +13298,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1953560981}
   - {fileID: 8544340163733275392}
-  - {fileID: 1197173237309023771}
+  - {fileID: 7517581368687066198}
   - {fileID: 1941026941}
