@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpBufferTime = 0.5f;
 
     [Header("Respawn Settings")]
-    public float respawnAnimationTime = 0.5f; // Time to wait for spawn animation
+    public float respawnAnimationTime = 0.5f;
 
     [Header("Debug")]
     public bool enableDebugLogs = false;
@@ -85,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
 
     // Respawn tracking
     private bool isRespawning = false;
+
+    // Track previous falling state to prevent continuous updates
+    private bool previousFallingState = false;
 
     void Start()
     {
@@ -121,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
         hasJumped = false;
         isFalling = false;
+        previousFallingState = false;
         fallSoundPlayed = false;
         timeSinceJump = 999f;
         isRespawning = false;
@@ -142,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         if (isRespawning)
             return;
         if (controller == null || !controller.enabled)
-          return;
+            return;
 
         timeSinceJump += Time.deltaTime;
 
@@ -156,7 +160,8 @@ public class PlayerMovement : MonoBehaviour
             if (hasJumped)
             {
                 hasJumped = false;
-                animator.SetBool("IsJumping", false);
+                if (animator != null)
+                    animator.SetBool("IsJumping", false);
             }
 
             if (velocity.y < 0)
@@ -233,8 +238,11 @@ public class PlayerMovement : MonoBehaviour
         {
             hasJumped = true;
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            animator.SetBool("IsJumping", true);
-            animator.SetBool("IsFalling", false);
+            if (animator != null)
+            {
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsFalling", false);
+            }
             jumpRequested = false;
             timeSinceJump = 0f;
 
@@ -261,6 +269,7 @@ public class PlayerMovement : MonoBehaviour
             shouldBeFalling = false;
         }
 
+        // Only update falling state if it actually changed
         if (shouldBeFalling && !isFalling)
         {
             SetFallingState(true);
@@ -288,9 +297,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isRespawning) return;
 
+        // Only update if state actually changed
+        if (isFalling == falling)
+            return;
+
         isFalling = falling;
+
         if (animator != null)
         {
+            // Only set the animator parameter when state changes
             animator.SetBool("IsFalling", isFalling);
             if (enableDebugLogs) Debug.Log($"IsFalling animation set to: {isFalling}");
         }
@@ -457,7 +472,7 @@ public class PlayerMovement : MonoBehaviour
         PlaySound(fallSound, fallSoundVolume);
     }
 
-    // ============ RESPAWN METHODS (Updated for your Animator) ============
+    // ============ RESPAWN METHODS ============
 
     // Complete reset of all states including animator
     public void ResetPlayerState()
@@ -471,6 +486,7 @@ public class PlayerMovement : MonoBehaviour
         // Reset jump and falling states
         hasJumped = false;
         isFalling = false;
+        previousFallingState = false;
         fallSoundPlayed = false;
         timeSinceJump = 999f;
         jumpRequested = false;
@@ -570,6 +586,7 @@ public class PlayerMovement : MonoBehaviour
         // Reset all states
         hasJumped = false;
         isFalling = false;
+        previousFallingState = false;
         fallSoundPlayed = false;
         timeSinceJump = 999f;
         jumpRequested = false;
@@ -593,11 +610,13 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = -1f;
             }
         }
-         if (animator != null)
-{
-    animator.Play("idle", 0, 0f);
-    animator.Update(0f);
-}
+
+        if (animator != null)
+        {
+            animator.Play("idle", 0, 0f);
+            animator.Update(0f);
+        }
+
         // Allow movement again
         isRespawning = false;
 
@@ -626,24 +645,37 @@ public class PlayerMovement : MonoBehaviour
 
         bool isMovingAnim = Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f;
 
-        animator.SetBool("IsRunning", isMovingAnim);
-        animator.SetBool("IsGrounded", isGrounded);
+        // Only update if values changed to prevent unnecessary animator calls
+        if (animator.GetBool("IsRunning") != isMovingAnim)
+            animator.SetBool("IsRunning", isMovingAnim);
 
-        // Priority system for animations
+        if (animator.GetBool("IsGrounded") != isGrounded)
+            animator.SetBool("IsGrounded", isGrounded);
+
+        // Priority system for animations - only update when states change
         if (hasJumped && !isGrounded && velocity.y > 0)
         {
-            animator.SetBool("IsJumping", true);
-            animator.SetBool("IsFalling", false);
+            if (!animator.GetBool("IsJumping"))
+            {
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsFalling", false);
+            }
         }
         else if (isFalling)
         {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", true);
+            if (animator.GetBool("IsJumping") || !animator.GetBool("IsFalling"))
+            {
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFalling", true);
+            }
         }
         else if (isGrounded)
         {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", false);
+            if (animator.GetBool("IsJumping") || animator.GetBool("IsFalling"))
+            {
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFalling", false);
+            }
         }
     }
 
