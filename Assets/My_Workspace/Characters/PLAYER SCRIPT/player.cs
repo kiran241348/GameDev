@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", false);
-            animator.SetBool("IsReSpawn", false);
+            animator.SetBool("IsReSpawning", false);
         }
     }
 
@@ -141,6 +141,8 @@ public class PlayerMovement : MonoBehaviour
         // Don't process movement while respawning
         if (isRespawning)
             return;
+        if (controller == null || !controller.enabled)
+          return;
 
         timeSinceJump += Time.deltaTime;
 
@@ -492,7 +494,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsFalling", false);
             animator.SetBool("IsRunning", false);
             animator.SetBool("IsGrounded", true);
-            animator.SetBool("IsReSpawn", false);
+            animator.SetBool("IsReSpawning", false);
 
             // Reset any triggers
             animator.ResetTrigger("Hit");
@@ -540,7 +542,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsGrounded", true);
 
             // Trigger respawn animation
-            animator.SetBool("IsReSpawn", true);
+            animator.SetBool("IsReSpawning", true);
 
             if (enableDebugLogs) Debug.Log("Spawn animation triggered");
         }
@@ -554,7 +556,7 @@ public class PlayerMovement : MonoBehaviour
         // Turn off respawn animation
         if (animator != null)
         {
-            animator.SetBool("IsReSpawn", false);
+            animator.SetBool("IsReSpawning", false);
             animator.SetBool("IsGrounded", true);
             animator.SetBool("IsFalling", false);
 
@@ -591,7 +593,11 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = -1f;
             }
         }
-
+         if (animator != null)
+{
+    animator.Play("idle", 0, 0f);
+    animator.Update(0f);
+}
         // Allow movement again
         isRespawning = false;
 
