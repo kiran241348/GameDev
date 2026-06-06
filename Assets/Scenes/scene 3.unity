@@ -294,7 +294,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 4ad0f6d5775611747abd98217dba1daf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 55f9c5b455e963b47995b12d5c63722a, type: 2}
+      objectReference: {fileID: 2100000, guid: 7066e32dfd666c54db1d3cb680af05f3, type: 2}
     - target: {fileID: 919132149155446097, guid: 4ad0f6d5775611747abd98217dba1daf, type: 3}
       propertyPath: m_Name
       value: planeground
@@ -1178,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 7202271454713460447, guid: a1284e3c2c121054dab638d081aa0634, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 24e180f9e068eb949bc75b13465a4d15, type: 2}
+      objectReference: {fileID: 2100000, guid: 0c7b55df9eddade46b45fd7427e407b0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: a1284e3c2c121054dab638d081aa0634, type: 3}
@@ -1388,7 +1388,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 84930d10146b3aa4db7e7b0bf8caae10, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 86a7645f4c117754f99e65f4ceb2c9df, type: 2}
+      objectReference: {fileID: 2100000, guid: 52448b513ac83f14da9c63004572b5bd, type: 2}
     - target: {fileID: 919132149155446097, guid: 84930d10146b3aa4db7e7b0bf8caae10, type: 3}
       propertyPath: m_Name
       value: gumni 1.1
@@ -1537,7 +1537,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 84930d10146b3aa4db7e7b0bf8caae10, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 86a7645f4c117754f99e65f4ceb2c9df, type: 2}
+      objectReference: {fileID: 2100000, guid: 52448b513ac83f14da9c63004572b5bd, type: 2}
     - target: {fileID: 919132149155446097, guid: 84930d10146b3aa4db7e7b0bf8caae10, type: 3}
       propertyPath: m_Name
       value: gumni 1.2
