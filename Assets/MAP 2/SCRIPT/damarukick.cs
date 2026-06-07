@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LaunchPad : MonoBehaviour
+public class LaunchPad1 : MonoBehaviour
 {
     public Transform targetPoint;
     public float arcHeight = 5f;
@@ -14,7 +14,7 @@ public class LaunchPad : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        PlayerLaunch launcher = other.GetComponent<PlayerLaunch>();
+        PlayerLaunch1 launcher = other.GetComponent<PlayerLaunch1>();
 
         if (launcher == null || targetPoint == null)
             return;
