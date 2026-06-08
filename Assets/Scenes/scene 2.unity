@@ -1600,8 +1600,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278241279
-  m_fontColor: {r: 1, g: 0.7821764, b: 0, a: 1}
+    rgba: 4278255608
+  m_fontColor: {r: 0.9737316, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
@@ -69311,7 +69311,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c8a95192fb02e03419f8f39aa33e5059, type: 2}
+  - {fileID: 2100000, guid: 24bb7d12b6f08b741ab24c0411fffbe0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
