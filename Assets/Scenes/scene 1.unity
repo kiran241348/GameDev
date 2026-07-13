@@ -86408,6 +86408,10 @@ PrefabInstance:
       propertyPath: enableDebugLogs
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7272524448187843061, guid: 4c808c1ecda6a1943ae7151c7fc5493f, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
